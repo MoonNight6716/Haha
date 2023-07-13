@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="./icon.png">
+    <meta charset="UTF-8">
+    <title id="hh">嘿嘿^_^</title>
+    <style>
+      @font-face {
+        font-family: "Genshin";
+        src: url("./genshin_font.ttf");
+      }
+      button, a {
+        font-family: "Genshin";
+      }
+      .hhBody {
+        border-radius: 5px;
+        padding: 1%;
+        margin: 0 auto;
+        width: 1000px;
+        height: auto;
+        background-color: rgb(100, 100, 100);
+        justify-content: space-between;
+        display: flex;
+      }
+      .hhVideo {
+        width: 800px;
+      }
+      #hhVideo {
+        width: 100%;
+        height: auto;
+      }
+      .hhBtns {
+        background-color: rgba(0, 0, 0, 0.25);
+        margin-left: 1%;
+        border-radius: 5px;
+        width: 200px;
+        padding: 1%;
+      }
+      .hhBtns button {
+        padding: 2%;
+        width: 48%;
+        margin: 1%;
+        border: 0;
+        color: rgb(255, 255, 255);
+        background-color: rgba(0, 0, 0, 0.25);
+      }
+      .hhBtns button:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+      .hhBtns button:active {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hhBody">
+      <div class="hhVideo">
+        <video id="hhVideo" controls="controls" src="http://yidejiaguan.com/Uploads/Video/%E8%8B%B1%E8%AF%AD/S1-06-Good.Luck.Charlie%2012+/Good.Luck.Charlie.S01E01.mp4"></video>
+      </div>
+      <div class="hhBtns">
+        <a id="hhTips" style="color: rgb(255, 255, 255);">Good Luck Charlie S1</a>
+        <div class="hhBtn" style="margin-top: 5%;">
+        </div>
+        <button style="width: 98%;" onclick="hhLang()">中/en</button>
+      </div>
+    </div>
+
+    <script>
+
+      function playVideo(EP) {
+        document.querySelector(".hhVideo").innerHTML = '<video id="hhVideo" controls="controls"></video>'
+        document.getElementById("hhVideo").setAttribute("src","http://yidejiaguan.com/Uploads/Video/%E8%8B%B1%E8%AF%AD/S1-06-Good.Luck.Charlie%2012+/Good.Luck.Charlie.S01E" + EP + ".mp4")
+      }
+      
+      var lang = localStorage.getItem('lang') || navigator.language.slice(0,2)
+      function langSpawn() {
+        var spBtn = ""
+        var hhBtnv = document.querySelector(".hhBtn")
+
+        if (lang == "en") {
+          for (i = 1; i < 10; i++) {
+            spBtn += `<button onclick="playVideo('0` + i + `')">EP0` + i + '</button>'
+          }
+          hhBtnv.innerHTML = spBtn
+          for (i = 10; i < 27; i++) {
+            spBtn += `<button onclick="playVideo('` + i + `')">EP` + i + '</button>'
+          }
+          hhBtnv.innerHTML = spBtn
+          document.getElementById('hhTips').innerHTML = "Good Luck Charlie S1"
+        }
+
+        else if (lang == "zh") {
+          for (i = 1; i < 10; i++) {
+            spBtn += `<button onclick="playVideo('0` + i + `')">第0` + i + '集</button>'
+          }
+          hhBtnv.innerHTML = spBtn
+          for (i = 10; i < 27; i++) {
+            spBtn += `<button onclick="playVideo('` + i + `')">第` + i + '集</button>'
+          }
+          document.getElementById("hhTips").innerHTML = "查理成长日记 第一季"
+          hhBtnv.innerHTML = spBtn
+        }
+      }
+      function hhLang() {
+        if (lang == "zh") {
+          lang = 'en'
+        } else {
+          lang = "zh"
+        }
+        langSpawn()
+      }
+      langSpawn()
+    </script>
+  </body>
+</html>
