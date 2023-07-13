@@ -12,11 +12,14 @@
       button, a {
         font-family: "Genshin";
       }
+      body {
+        margin: 0;
+      }
       .hhBody {
         border-radius: 5px;
         padding: 1%;
         margin: 0 auto;
-        width: 1000px;
+        width: 1040px;
         height: auto;
         background-color: rgb(100, 100, 100);
         justify-content: space-between;
@@ -52,8 +55,8 @@
       }
     </style>
   </head>
-  <body>
-    <div class="hhBody">
+  <body id="hhasd">
+    <div class="hhBody" id="hhBody">
       <div class="hhVideo">
         <video id="hhVideo" controls="controls" src="http://www.yidejiaguan.com/Uploads/Video/%E8%8B%B1%E8%AF%AD/S1-06-Good.Luck.Charlie%2012+/Good.Luck.Charlie.S01E01.mp4"></video>
       </div>
@@ -66,6 +69,25 @@
     </div>
 
     <script>
+      function windowSize() {
+        var hhSize = document.querySelector("body").clientWidth
+        var hhDs = document.styleSheets[0]; var hhScss = hhDs.cssRules[3].style
+        var hhBtnsCss = hhDs.cssRules[6].style; var hhBtnCss = hhDs.cssRules[7].style
+        if (hhSize < 1000) {
+          hhScss.removeProperty('justify-content'); hhScss.removeProperty('display'); hhScss.width = "800px"
+          hhBtnsCss.width = "auto"; hhBtnsCss.margin = "0"
+          hhBtnCss.width = "19%"; hhBtnCss.margin = "0.5%"
+          document.querySelector(".hhBtn").style.marginTop = "1%"
+          document.querySelector(".hhBtns").children[2].style.width = "99%"
+        } else {
+          hhScss.justifyContent = "space-between"; hhScss.display = "flex"; hhScss.width = "1040px"; 
+          hhBtnsCss.width = "200px"; hhBtnsCss.marginLeft = "1%"
+          hhBtnCss.width = "48%"; hhBtnCss.margin = "1%"
+          document.querySelector(".hhBtn").style.marginTop = "5%"
+          document.querySelector(".hhBtns").children[2].style.width = "98%"
+        }
+      }
+
       function playVideo(EP) {
         document.querySelector(".hhVideo").innerHTML = '<video id="hhVideo" controls="controls"></video>'
         document.getElementById("hhVideo").setAttribute("src","http://www.yidejiaguan.com/Uploads/Video/%E8%8B%B1%E8%AF%AD/S1-06-Good.Luck.Charlie%2012+/Good.Luck.Charlie.S01E" + EP + ".mp4")
@@ -73,41 +95,28 @@
       
       var lang = localStorage.getItem('lang') || navigator.language.slice(0,2)
       function langSpawn() {
-        var spBtn = ""
-        var hhBtnv = document.querySelector(".hhBtn")
-
+        var spBtn = ""; var hhBtnv = document.querySelector(".hhBtn")
         if (lang == "en") {
-          for (i = 1; i < 10; i++) {
-            spBtn += `<button onclick="playVideo('0` + i + `')">EP0` + i + '</button>'
-          }
+          for (i = 1; i < 10; i++) {spBtn += `<button onclick="playVideo('0` + i + `')">EP0` + i + '</button>'}
           hhBtnv.innerHTML = spBtn
-          for (i = 10; i < 27; i++) {
-            spBtn += `<button onclick="playVideo('` + i + `')">EP` + i + '</button>'
-          }
+          for (i = 10; i < 27; i++) {spBtn += `<button onclick="playVideo('` + i + `')">EP` + i + '</button>'}
           hhBtnv.innerHTML = spBtn
           document.getElementById('hhTips').innerHTML = "Good Luck Charlie S1"
-        }
-
-        else if (lang == "zh") {
-          for (i = 1; i < 10; i++) {
-            spBtn += `<button onclick="playVideo('0` + i + `')">第0` + i + '集</button>'
-          }
+        } else if (lang == "zh") {
+          for (i = 1; i < 10; i++) {spBtn += `<button onclick="playVideo('0` + i + `')">第0` + i + '集</button>'}
           hhBtnv.innerHTML = spBtn
-          for (i = 10; i < 27; i++) {
-            spBtn += `<button onclick="playVideo('` + i + `')">第` + i + '集</button>'
-          }
+          for (i = 10; i < 27; i++) {spBtn += `<button onclick="playVideo('` + i + `')">第` + i + '集</button>'}
           document.getElementById("hhTips").innerHTML = "查理成长日记 第一季"
           hhBtnv.innerHTML = spBtn
         }
       }
+
       function hhLang() {
-        if (lang == "zh") {
-          lang = 'en'
-        } else {
-          lang = "zh"
-        }
+        if (lang == "zh") lang = 'en'
+        else lang = "zh"
         langSpawn()
       }
+      windowSize()
       langSpawn()
     </script>
   </body>
