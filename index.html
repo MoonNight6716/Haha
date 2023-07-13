@@ -55,7 +55,7 @@
   <body>
     <div class="hhBody">
       <div class="hhVideo">
-        <video id="hhVideo" controls="controls" src="http://yidejiaguan.com/Uploads/Video/%E8%8B%B1%E8%AF%AD/S1-06-Good.Luck.Charlie%2012+/Good.Luck.Charlie.S01E01.mp4"></video>
+        <video id="hhVideo" controls="controls" src="http://www.yidejiaguan.com/Uploads/Video/%E8%8B%B1%E8%AF%AD/S1-06-Good.Luck.Charlie%2012+/Good.Luck.Charlie.S01E01.mp4"></video>
       </div>
       <div class="hhBtns">
         <a id="hhTips" style="color: rgb(255, 255, 255);">Good Luck Charlie S1</a>
@@ -66,10 +66,9 @@
     </div>
 
     <script>
-
       function playVideo(EP) {
         document.querySelector(".hhVideo").innerHTML = '<video id="hhVideo" controls="controls"></video>'
-        document.getElementById("hhVideo").setAttribute("src","http://yidejiaguan.com/Uploads/Video/%E8%8B%B1%E8%AF%AD/S1-06-Good.Luck.Charlie%2012+/Good.Luck.Charlie.S01E" + EP + ".mp4")
+        document.getElementById("hhVideo").setAttribute("src","http://www.yidejiaguan.com/Uploads/Video/%E8%8B%B1%E8%AF%AD/S1-06-Good.Luck.Charlie%2012+/Good.Luck.Charlie.S01E" + EP + ".mp4")
       }
       
       var lang = localStorage.getItem('lang') || navigator.language.slice(0,2)
