@@ -13,6 +13,7 @@
         font-family: "Genshin";
       }
       body {
+        width: auto;
         margin: 0;
       }
       .hhBody {
@@ -73,12 +74,14 @@
         var hhSize = document.querySelector("body").clientWidth
         var hhDs = document.styleSheets[0]; var hhScss = hhDs.cssRules[3].style
         var hhBtnsCss = hhDs.cssRules[6].style; var hhBtnCss = hhDs.cssRules[7].style
+        var hhBodyCss = hhDs.cssRules[2].style
         if (hhSize < 1000) {
           hhScss.removeProperty('justify-content'); hhScss.removeProperty('display'); hhScss.width = "800px"; hhScss.margin = "0"
           hhBtnsCss.width = "auto"; hhBtnsCss.margin = "0"
           hhBtnCss.width = "19%"; hhBtnCss.margin = "0.5%"
           document.querySelector(".hhBtn").style.marginTop = "1%"
           document.querySelector(".hhBtns").children[2].style.width = "99%"
+          hhBodyCss.width = "800px"
         } else {
           hhScss.justifyContent = "space-between"; hhScss.display = "flex"; hhScss.width = "1040px"; hhScss.margin = "0 auto"
           hhBtnsCss.width = "auto"; hhBtnsCss.margin = "0"
@@ -86,7 +89,7 @@
           hhBtnCss.width = "48%"; hhBtnCss.margin = "1%"
           document.querySelector(".hhBtn").style.marginTop = "5%"
           document.querySelector(".hhBtns").children[2].style.width = "98%"
-        } else {
+          hhBodyCss.width = "1040px"
         }
       }
 
